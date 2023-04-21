@@ -26,6 +26,7 @@
     copy:
       src: /var/www/hello/hello.service
       dest: /etc/systemd/system/hello.service
+      remote_src: true
     notify:
       - restart hello service
 
