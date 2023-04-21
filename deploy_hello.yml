@@ -21,6 +21,8 @@
       src: /tmp/hello.tar
       dest: /
       mode: '0775'
+    notify:
+    - restart hello service
       
   - name: Deploy hello service
     copy:
