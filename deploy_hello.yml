@@ -1,6 +1,21 @@
 ---
 - hosts: myroup
   tasks:
+  - name: Deploy flask setup service
+    copy:
+      src: /tmp/flask_seup.sh
+      dest: /tmp/flask_seup.sh
+      mode: '0755'
+    
+  - name: Run flask service
+    shell: "/tmp/flask_seup.sh"
+  
+  - name: Deploy hello service
+    copy:
+      src: /tmp/hello.tar
+      dest: /tmp/hello.tar
+      mode: '0755'
+      
   - name: Extract hello.tar into /var/www/hello
     unarchive:
       src: /tmp/hello.tar
