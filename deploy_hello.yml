@@ -1,0 +1,26 @@
+---
+- hosts: myroup
+  tasks:
+  - name: Extract hello.tar into /var/www/hello
+    unarchive:
+      src: /tmp/hello.tar
+      dest: /
+      mode: '0775'
+      
+  - name: Deploy hello service
+    copy:
+      src: /var/www/hello/hello.service
+      dest: /etc/systemd/system/hello.service
+    notify:
+      - restart hello service
+
+  - name: Start hello
+    service:
+      name: hello
+      state: started
+
+  handlers:
+  - name: restart hello service
+    service:
+      name: hello
+      state: restarted
