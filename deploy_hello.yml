@@ -1,14 +1,14 @@
 ---
-- hosts: myroup
+- hosts: mygroup
   tasks:
   - name: Deploy flask setup service
     copy:
-      src: /tmp/flask_seup.sh
-      dest: /tmp/flask_seup.sh
+      src: /tmp/flask_setup.sh
+      dest: /tmp/flask_setup.sh
       mode: '0755'
     
   - name: Run flask service
-    shell: "/tmp/flask_seup.sh"
+    shell: "/tmp/flask_setup.sh"
   
   - name: Deploy hello service
     copy:
